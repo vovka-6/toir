@@ -8,7 +8,7 @@
 1. Зарегистрируйтесь на https://github.com (бесплатно).
 2. Нажмите **New repository** → имя `toir` → **Public** → **Create repository**.
 3. На странице репозитория: **uploading an existing file** → перетащите **все файлы и папки** из этого архива
-   (index.html, app.js, sw.js, xlsx-lite.js, manifest.webmanifest, папки data, icons, vendor) → **Commit changes**.
+   (все 13 файлов, папок нет) → **Commit changes**.
 4. **Settings → Pages** → Source: **Deploy from a branch** → Branch: **main**, папка **/ (root)** → **Save**.
 5. Через 1–2 минуты приложение доступно по адресу `https://ВАШ-ЛОГИН.github.io/toir/`.
 
@@ -38,8 +38,8 @@
 
 ## 5. Изменения
 
-- **Новый агрегат для всех:** добавьте строку в `data/equipment.js` (или скачайте его из приложения),
-  загрузите на GitHub и увеличьте версию в `sw.js` (`toir-v1` → `toir-v2`).
+- **Новый агрегат для всех:** добавьте строку в `equipment.js` (или скачайте его из приложения),
+  загрузите на GitHub и увеличьте версию в `sw.js` (`toir-v2` → `toir-v3`).
 - **Новая модель / чек-лист:** раздел `MODELS` в `app.js`.
 - Телефоны получат обновление при следующем выходе в интернет (появится кнопка «Обновить»).
 

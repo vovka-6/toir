@@ -1,11 +1,11 @@
 /* Офлайн-режим: все файлы приложения хранятся на телефоне.
    После любого изменения файлов на GitHub увеличьте VERSION —
    телефоны скачают обновление при следующем выходе в интернет. */
-const VERSION = "toir-v1";
+const VERSION = "toir-v2";
 const FILES = [
-  "./", "./index.html", "./app.js", "./xlsx-lite.js", "./data/equipment.js",
-  "./vendor/qrcode.js", "./vendor/jsQR.js", "./manifest.webmanifest",
-  "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png", "./icons/apple-touch-icon.png"
+  "./", "./index.html", "./app.js", "./xlsx-lite.js", "./equipment.js",
+  "./qrcode.js", "./jsQR.js", "./manifest.webmanifest",
+  "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png"
 ];
 
 self.addEventListener("install", e => {

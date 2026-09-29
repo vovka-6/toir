@@ -492,7 +492,7 @@ function labelsHTML(){
      <label><span class="lbl">Код метки</span><input type="text" id="nCode" placeholder="G8-SCH-2" style="text-transform:uppercase"><span class="hint">Латиница, цифры и дефис</span></label>
    </div>
    <button class="btn" id="addEq" style="margin-top:12px">Добавить и создать QR</button>
-   <div class="note" style="margin-top:8px">Агрегат добавится на этом устройстве и уйдёт другим вместе с файлом передачи. Чтобы он сразу был у всех, скачайте справочник и замените файл data/equipment.js на сайте.</div>
+   <div class="note" style="margin-top:8px">Агрегат добавится на этом устройстве и уйдёт другим вместе с файлом передачи. Чтобы он сразу был у всех, скачайте справочник и замените файл equipment.js на GitHub.</div>
    <button class="btn sec sm" id="eqDl" style="margin-top:8px">Скачать справочник (equipment.js)</button>
    </details>
    <div class="row" style="justify-content:space-between"><span class="lbl">QR-метки · отмечено ${Object.keys(sel).length}</span>
@@ -512,7 +512,7 @@ async function addEquipment(){
 }
 function downloadEquipmentJs(){
   const rows=equipment.map(e=>`  { code: ${JSON.stringify(e.code)}, site: ${JSON.stringify(e.site)}, model: ${JSON.stringify(e.model)}, pos: ${JSON.stringify(e.pos)}, inv: ${JSON.stringify(e.inv||"")} }`).join(",\n");
-  const js=`/* СПРАВОЧНИК ОБОРУДОВАНИЯ — выгружен из приложения ${new Date().toLocaleString("ru-RU")}.\n   Замените им data/equipment.js на сайте и увеличьте VERSION в sw.js. */\nwindow.EQUIPMENT = [\n${rows}\n];\n`;
+  const js=`/* СПРАВОЧНИК ОБОРУДОВАНИЯ — выгружен из приложения ${new Date().toLocaleString("ru-RU")}.\n   Замените им equipment.js на GitHub и увеличьте VERSION в sw.js. */\nwindow.EQUIPMENT = [\n${rows}\n];\n`;
   saveFile(new Blob([js],{type:"text/javascript"}),"equipment.js");
 }
 function qrData(code){ const q=qrcode(0,"M"); q.addData(linkFor(code)); q.make(); return q.createDataURL(6,2); }
@@ -629,6 +629,7 @@ window.addEventListener("hashchange",fromHash);
     await loadAll();
   }catch(e){ document.getElementById("view").innerHTML=`<div class="panel" style="margin-top:14px">Не удалось открыть память телефона. Откройте приложение не в режиме «инкогнито».</div>`; return; }
   render(); fromHash();
+  if(!window.EQUIPMENT) toast("Не найден файл equipment.js — загрузите его на GitHub");
 })();
 
 if("serviceWorker" in navigator){
